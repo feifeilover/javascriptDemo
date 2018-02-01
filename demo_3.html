@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>javascript</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">	 
+		window.onload = function() {  //点击每个 li 节点, 若 li 节点的文本值没有 ^^ 开头, 加上； 如果有, 则去除
+			var liNode = document.getElementsByTagName("li");
+			for(var i=0;i<liNode.length;i++) {
+				liNode[i].onclick = function() {
+					var oldNum = this.firstChild.nodeValue;
+					//alert(oldNum);
+					var rel = /^\^{3}/g;
+					if(rel.test(oldNum)) {  //注意test方法和replace方法
+						oldNum = oldNum.replace(rel,"");
+					} else {
+						oldNum = "^^^" + oldNum;
+					}
+					this.firstChild.nodeValue = oldNum;
+					//alert(oldNum);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<p>你喜欢哪个城市?</p>
+		<ul id="city"><li id="bj" name="BeiJing">北京</li>
+			<li>上海</li>
+			<li id="dj">东京</li>
+			<li id="se">首尔</li>
+		</ul>
+		
+		<br><br>
+		<p>你喜欢哪款单机游戏?</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		
+		<br><br>
+		gender: 
+			<input type="radio" name="gender" value="male"/>Male
+			<input type="radio" name="gender" value="female"/>Female
+	
+		<br><br>
+		name: <input type="text" name="username" value="atguigu"/>
+</body>
+</html>
